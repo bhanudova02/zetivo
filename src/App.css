@@ -1,0 +1,116 @@
+@keyframes scaleBlink {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+.scale-blink {
+  animation: scaleBlink 1s infinite;
+}
+
+
+/* HeaderComponent.css */
+.active-link {
+  color: #E85A71;
+  position: relative;
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Adjusts the position of the underline */
+  left: 0;
+  width: 40%;
+  height: 2px;
+  background-color:#E85A71; /* Custom green underline */
+}
+
+
+
+
+
+
+
+
+
+/* CardAnimation.css */
+
+/* Houdini property */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: false;
+}
+
+/* Root Variables */
+:root {
+  --bg-background: #111827;
+  --clr-card: #1f2937;
+  --clr-1: #6420aa;
+  --clr-2: #ff3ea5;
+  --clr-3: #ff7ed4;
+}
+
+.card {
+  position: relative;
+  height: 24rem;
+  width: 16rem;
+  border-radius: 0.45rem;
+  cursor: pointer;
+  background-color: var(--clr-card);
+  overflow: hidden; /* Ensures content stays within the card */
+}
+
+.card::after,
+.card::before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  inset: -0.5rem;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-card),
+    var(--clr-1),
+    var(--clr-2),
+    var(--clr-3),
+    var(--clr-2),
+    var(--clr-1),
+    var(--clr-card)
+  );
+  border-radius: inherit;
+  animation: rotate 2.5s linear infinite;
+}
+
+.card::after {
+  filter: blur(3rem);
+}
+
+@keyframes rotate {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
+
+/* Text overflow control */
+.card h3,
+.card p,
+.card ul {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card p {
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal; /* Allows line wrapping */
+}
