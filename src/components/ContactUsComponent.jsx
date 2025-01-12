@@ -60,7 +60,7 @@ export function ContactUsComponent() {
             </p>
             <div className='space-y-2'>
               <div className='text-2xl'>Email :</div>
-              <div className='text-[#E85A71] text-lg'>{aboutData.email}</div>
+              <div className='text-[#E85A71] text-lg'>bhanudova02@gmail.com</div>
             </div>
             <div className='mt-6 space-y-2'>
               <div className='text-2xl'>Say Hello :</div>
